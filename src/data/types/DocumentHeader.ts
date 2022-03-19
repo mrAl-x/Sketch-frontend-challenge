@@ -1,3 +1,3 @@
 export type DocumentHeaderProps = {
-  title: string;
+  title: React.ReactNode | string;
 };
