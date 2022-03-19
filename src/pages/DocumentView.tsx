@@ -7,7 +7,7 @@ import { GET_DOCUMENT_BY_ID } from '../data/constants/Queries';
 import { GET_DOCUMENT_BY_ID_RESPONSE } from '../data/types/Queries';
 
 const Main = styled.div`
-  margin-top: 24px;
+  margin-top: 12px;
   margin-bottom: 100px;
   padding: 0 24px;
 `;
@@ -16,7 +16,6 @@ const ArtboardList = styled.div`
   display: grid;
   grid-template-columns: repeat(5, minmax(240px, 1fr));
   grid-column-gap: 16px;
-  grid-row-gap: 24px;
 
   @media (max-width: 1400px) {
     grid-template-columns: repeat(4, minmax(240px, 1fr));
@@ -39,11 +38,15 @@ const ArtboardWrapper = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 12px 0;
+  border-radius: 4px;
   color: rgba(0, 0, 0, 0.65);
   text-decoration: none;
 
   &:hover {
-    text-decoration: underline;
+    padding: 11px 0;
+    border: 1px solid rgb(253, 173, 0, 0.3);
+    background-color: rgba(254, 238, 183, 0.2);
   }
 `;
 

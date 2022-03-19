@@ -3,12 +3,20 @@ import StringPlaceholder, { pulseAnimation } from './StringPlaceholder';
 
 const Wrapper = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  padding-top: 12px;
+  padding-left: 12px;
+
+  @media (max-width: 600px) {
+    justify-content: center;
+  }
 `;
 
 const ThumbnailWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 24px;
 
   &:not(:last-child) {
     margin-right: 40px;
