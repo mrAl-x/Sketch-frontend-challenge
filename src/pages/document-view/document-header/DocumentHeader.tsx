@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { DocumentHeaderProps } from '../../data/types';
-import LogoSvg from '../../assets/logo/sketch-logo.svg';
-import { ReactComponent as DividerSvg } from '../../assets/icons/separator.svg';
+import { DocumentHeaderProps } from '../../../data/types';
+import LogoSvg from '../../../assets/logo/sketch-logo.svg';
+import { ReactComponent as DividerSvg } from '../../../assets/icons/separator.svg';
 
 const Wrapper = styled.header`
   display: flex;

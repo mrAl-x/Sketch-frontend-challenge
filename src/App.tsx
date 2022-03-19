@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ArtboardView from './pages/ArtboardView';
-import DocumentView from './pages/DocumentView';
+import ArtboardView from './pages/artboard-view/ArtboardView';
+import DocumentView from './pages/document-view/DocumentView';
 
 function App() {
   return (

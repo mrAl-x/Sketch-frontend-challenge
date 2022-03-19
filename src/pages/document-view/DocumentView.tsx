@@ -2,10 +2,10 @@ import { useQuery } from '@apollo/client';
 import { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import DocumentHeader from '../components/document-header/DocumentHeader';
-import { ArtboardThumbnailPlaceholder, StringPlaceholder } from '../components/shared/skeleton-ui';
-import { GET_DOCUMENT_BY_ID } from '../data/constants/Queries';
-import { GET_DOCUMENT_BY_ID_RESPONSE } from '../data/types/Queries';
+import DocumentHeader from './document-header/DocumentHeader';
+import { ArtboardThumbnailPlaceholder, StringPlaceholder } from '../../components/shared/skeleton-ui';
+import { GET_DOCUMENT_BY_ID } from '../../data/constants/Queries';
+import { GET_DOCUMENT_BY_ID_RESPONSE } from '../../data/types/Queries';
 
 const Main = styled.div`
   margin-top: 12px;
