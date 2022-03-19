@@ -1,3 +1,4 @@
 import StringPlaceholder from './StringPlaceholder';
+import ArtboardThumbnailPlaceholder from './ArtboardThumbnailPlaceholder';
 
-export { StringPlaceholder };
+export { StringPlaceholder, ArtboardThumbnailPlaceholder };

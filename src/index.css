@@ -30,6 +30,10 @@ body {
 }
 
 h1 {
-  margin: 0;
   font-family: Helvetica, 'Helvetica Neue', sans-serif;
+}
+
+h1,
+h2 {
+  margin: 0;
 }

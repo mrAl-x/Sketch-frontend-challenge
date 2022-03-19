@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components';
 import { StringPlaceholderProps } from '../../../data/types';
 
-const pulseAnimation = keyframes`
+export const pulseAnimation = keyframes`
   0% {
     opacity: 1;
   }
