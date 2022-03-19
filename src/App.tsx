@@ -5,7 +5,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<DocumentView />} />
+        <Route path="/document" element={<DocumentView />} />
+        <Route path="/document/:documentId" element={<DocumentView />} />
         <Route path="*" element={<DocumentView />} />
       </Routes>
     </BrowserRouter>

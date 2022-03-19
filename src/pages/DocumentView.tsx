@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import DocumentHeader from '../components/document-header/DocumentHeader';
 import { ArtboardThumbnailPlaceholder, StringPlaceholder } from '../components/shared/skeleton-ui';
@@ -65,10 +66,16 @@ const ArtboardName = styled.h2`
 `;
 
 const DocumentView = () => {
-  const { loading, data } = useQuery<GET_DOCUMENT_BY_ID_RESPONSE>(
-    GET_DOCUMENT_BY_ID('e981971c-ff57-46dc-a932-a60dc1804992')
-  );
+  const params = useParams();
+  const navigate = useNavigate();
+  const { loading, data } = useQuery<GET_DOCUMENT_BY_ID_RESPONSE>(GET_DOCUMENT_BY_ID(params?.documentId || ''));
   const document = data?.share?.version?.document;
+
+  useEffect(() => {
+    if (!loading && !data?.share?.version?.document) {
+      return navigate('/document/e981971c-ff57-46dc-a932-a60dc1804992');
+    }
+  }, [loading]);
 
   return (
     <>
