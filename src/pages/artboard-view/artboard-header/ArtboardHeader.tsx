@@ -3,12 +3,12 @@ import { ArtboardHeaderProps } from '../../../data/types';
 import CrossSvg from '../../../assets/icons/close.svg';
 import { ReactComponent as DividerSvg } from '../../../assets/icons/separator.svg';
 
-const Wrapper = styled.header`
+const Wrapper = styled.header<{ height?: number }>`
   position: relative;
   display: flex;
   align-items: center;
   width: 100vw;
-  height: 64px;
+  height: ${({ height }) => `${height}px` || '64px'};
   padding: 18px 16px;
   box-sizing: border-box;
   background-color: #ffffff;
@@ -41,9 +41,9 @@ const Title = styled.h1`
   transform: translate(-50%, -50%);
 `;
 
-const ArtboardHeader = ({ onClose, title }: ArtboardHeaderProps) => {
+const ArtboardHeader = ({ height, onClose, title }: ArtboardHeaderProps) => {
   return (
-    <Wrapper>
+    <Wrapper height={height}>
       <CloseButton onClick={onClose} aria-label="Close artboard">
         <img src={CrossSvg} alt="Cross icon" />
       </CloseButton>
