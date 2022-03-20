@@ -86,7 +86,7 @@ const DocumentView = () => {
         ) : (
           <ArtboardList>
             {document?.artboards?.entries.map((artboard, index) => (
-              <ArtboardWrapper key={index} to={`artboard/${artboard.name}`}>
+              <ArtboardWrapper key={index} to={`artboard/${artboard.name}`} aria-label={`${artboard?.name} artboard`}>
                 <ArtboardThumbnail src={artboard?.files.find((artboardImage) => artboardImage.scale === 1)?.url} />
                 <ArtboardName>{artboard?.name}</ArtboardName>
               </ArtboardWrapper>
