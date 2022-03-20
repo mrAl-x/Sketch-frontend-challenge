@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import DocumentHeader from './document-header/DocumentHeader';
-import { ArtboardThumbnailPlaceholder, StringPlaceholder } from '../../components/shared/skeleton-ui';
+import { ArtboardThumbnailPlaceholder, StringPlaceholder } from '../../shared/components/skeleton-ui';
 import { GET_DOCUMENT_BY_ID } from '../../data/constants/Queries';
 import { GET_DOCUMENT_BY_ID_RESPONSE } from '../../data/types/Queries';
 

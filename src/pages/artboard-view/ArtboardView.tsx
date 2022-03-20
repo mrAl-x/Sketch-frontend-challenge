@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ArtboardHeader from './artboard-header/ArtboardHeader';
-import { ImagePlaceholder as SkeletonImagePlaceholder, StringPlaceholder } from '../../components/shared/skeleton-ui';
+import { ImagePlaceholder as SkeletonImagePlaceholder, StringPlaceholder } from '../../shared/components/skeleton-ui';
 import { GET_DOCUMENT_BY_ID } from '../../data/constants/Queries';
 import { GET_DOCUMENT_BY_ID_RESPONSE } from '../../data/types/Queries';
-import { filterArtboardsByName } from '../../utils/helpers';
+import { findArtboardByName, findArtboardByIndex } from '../../utils/helpers';
 
 const CONTENT_PADDING = '50px';
 const HEADER_HEIGHT = 64;
@@ -39,23 +39,51 @@ const Thumbnail = styled.img`
 const ArtboardView = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const [artboardName, setArtboardName] = useState<string | undefined>(undefined);
-  const [artboardThumbnail, setArtboardThumbmail] = useState<string | undefined>(undefined);
   const { loading, data } = useQuery<GET_DOCUMENT_BY_ID_RESPONSE>(GET_DOCUMENT_BY_ID(params?.documentId || ''));
+  const [artboardName, setArtboardName] = useState<string | undefined>(undefined);
+  const [artboardIndex, setArtboardIndex] = useState<number | undefined>(undefined);
+  const [artboardThumbnail, setArtboardThumbmail] = useState<string | undefined>(undefined);
+  const artboards = data?.share?.version?.document?.artboards?.entries;
 
   const goToPreviousPage = () => navigate(`/document/${params?.documentId}`);
 
+  const handleArtboardNavigation = (direction: 'previous' | 'next') => {
+    const navigateToArtboard = (artboard?: string) => navigate(`/document/${params?.documentId}/artboard/${artboard}`);
+
+    if (!artboards || (!artboardIndex && artboardIndex !== 0)) {
+      return;
+    }
+
+    if (direction === 'previous') {
+      if (artboardIndex === 0) {
+        return;
+      }
+
+      const artboard = findArtboardByIndex(artboards, artboardIndex - 1)?.name;
+
+      return navigateToArtboard(artboard);
+    } else {
+      if (artboardIndex === artboards.length - 1) {
+        return;
+      }
+
+      const artboard = findArtboardByIndex(artboards, artboardIndex + 1)?.name;
+
+      return navigateToArtboard(artboard);
+    }
+  };
+
   useEffect(() => {
-    const artboards = data?.share?.version?.document?.artboards?.entries;
-    const artboard = artboards && filterArtboardsByName(artboards, params?.artboardId || '');
+    const artboard = artboards && findArtboardByName(artboards, params?.artboardId || '');
 
     if (!loading && !artboard) {
       goToPreviousPage();
     } else {
       setArtboardName(artboard?.name);
+      setArtboardIndex(artboards?.findIndex((element) => element.name === artboard?.name));
       setArtboardThumbmail(artboard?.files.find((artboardImage) => artboardImage.scale === 1)?.url);
     }
-  }, [loading]);
+  }, [loading, params?.artboardId]);
 
   return (
     <>
@@ -63,6 +91,10 @@ const ArtboardView = () => {
         height={HEADER_HEIGHT}
         onClose={goToPreviousPage}
         title={loading ? <StringPlaceholder /> : artboardName}
+        previous={() => handleArtboardNavigation('previous')}
+        next={() => handleArtboardNavigation('next')}
+        currentArtboardIndex={artboardIndex}
+        totalArtboards={data?.share?.version?.document?.artboards?.entries?.length}
       />
       <Wrapper>{loading ? <ImagePlaceholder /> : <Thumbnail src={artboardThumbnail} alt={artboardName} />}</Wrapper>
     </>
