@@ -37,15 +37,15 @@ const ArtboardNavigation = ({ currentArtboardIndex, next, previous, totalArtboar
 
   return (
     <Wrapper>
-      <LeftArrow onClick={previous}>
+      <LeftArrow onClick={previous} data-testId="navigation-previous-button">
         <LeftArrowSvg />
       </LeftArrow>
       <CounterWrapper>
-        <span>{currentArtboardNumber}</span>
+        <span data-testId="navigation-current-number">{currentArtboardNumber}</span>
         <Divider>/</Divider>
-        <span>{totalArtboards}</span>
+        <span data-testId="navigation-total-number">{totalArtboards}</span>
       </CounterWrapper>
-      <RightArrow onClick={next}>
+      <RightArrow onClick={next} data-testId="navigation-next-button">
         <RightArrowSvg />
       </RightArrow>
     </Wrapper>

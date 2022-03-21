@@ -62,7 +62,7 @@ const ArtboardHeader = ({
 }: ArtboardHeaderProps) => {
   return (
     <Wrapper height={height}>
-      <CloseButton onClick={onClose} aria-label="Close artboard">
+      <CloseButton onClick={onClose} aria-label="Close artboard" data-testId="close-artboard-button">
         <img src={CrossSvg} alt="Cross icon" />
       </CloseButton>
       <Divider />
