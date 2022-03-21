@@ -1,15 +1,15 @@
 export type ArtboardHeader = {
-  currentArtboardIndex?: ArtboardNavigation['currentArtboardIndex'];
+  currentIndex?: Navigation['currentIndex'];
   height?: number;
-  next: ArtboardNavigation['next'];
+  next: Navigation['next'];
   onClose: () => void;
-  previous: ArtboardNavigation['previous'];
+  previous: Navigation['previous'];
   title: React.ReactNode | string;
-  totalArtboards?: ArtboardNavigation['totalArtboards'];
+  totalArtboards?: Navigation['totalArtboards'];
 };
 
-export type ArtboardNavigation = {
-  currentArtboardIndex?: number;
+export type Navigation = {
+  currentIndex?: number;
   next: () => void;
   previous: () => void;
   totalArtboards?: number | '-';

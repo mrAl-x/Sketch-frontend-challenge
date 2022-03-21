@@ -93,7 +93,7 @@ const ArtboardView = () => {
         title={loading ? <StringPlaceholder /> : artboardName}
         previous={() => handleArtboardNavigation('previous')}
         next={() => handleArtboardNavigation('next')}
-        currentArtboardIndex={artboardIndex}
+        currentIndex={artboardIndex}
         totalArtboards={data?.share?.version?.document?.artboards?.entries?.length}
       />
       <Wrapper>{loading ? <ImagePlaceholder /> : <Thumbnail src={artboardThumbnail} alt={artboardName} />}</Wrapper>

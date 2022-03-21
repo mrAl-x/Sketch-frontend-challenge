@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ArtboardNavigation as ArtboardNavigationProps } from '../../../data/types';
+import { Navigation as NavigationProps } from '../../../data/types';
 import { ReactComponent as LeftArrowSvg } from '../../../assets/icons/arrow-left.svg';
 import { ReactComponent as RightArrowSvg } from '../../../assets/icons/arrow-right.svg';
 
@@ -32,8 +32,8 @@ const Divider = styled.span`
   margin: 0 10px;
 `;
 
-const ArtboardNavigation = ({ currentArtboardIndex, next, previous, totalArtboards }: ArtboardNavigationProps) => {
-  const currentArtboardNumber = typeof currentArtboardIndex === 'number' ? currentArtboardIndex + 1 : '-';
+const Navigation = ({ currentIndex, next, previous, totalArtboards }: NavigationProps) => {
+  const currentNumber = typeof currentIndex === 'number' ? currentIndex + 1 : '-';
 
   return (
     <Wrapper>
@@ -41,7 +41,7 @@ const ArtboardNavigation = ({ currentArtboardIndex, next, previous, totalArtboar
         <LeftArrowSvg />
       </LeftArrow>
       <CounterWrapper>
-        <span data-testId="navigation-current-number">{currentArtboardNumber}</span>
+        <span data-testId="navigation-current-number">{currentNumber}</span>
         <Divider>/</Divider>
         <span data-testId="navigation-total-number">{totalArtboards}</span>
       </CounterWrapper>
@@ -52,8 +52,8 @@ const ArtboardNavigation = ({ currentArtboardIndex, next, previous, totalArtboar
   );
 };
 
-ArtboardNavigation.defaultProps = {
+Navigation.defaultProps = {
   totalArtboards: '-',
 };
 
-export default ArtboardNavigation;
+export default Navigation;

@@ -52,7 +52,7 @@ const Title = styled.h1`
 `;
 
 const ArtboardHeader = ({
-  currentArtboardIndex,
+  currentIndex,
   height,
   next,
   onClose,
@@ -66,12 +66,7 @@ const ArtboardHeader = ({
         <img src={CrossSvg} alt="Cross icon" />
       </CloseButton>
       <Divider />
-      <ArtboardNavigation
-        previous={previous}
-        next={next}
-        currentArtboardIndex={currentArtboardIndex}
-        totalArtboards={totalArtboards}
-      />
+      <ArtboardNavigation previous={previous} next={next} currentIndex={currentIndex} totalArtboards={totalArtboards} />
       <Title>{title}</Title>
     </Wrapper>
   );
