@@ -7,13 +7,13 @@ import { ArtboardThumbnailPlaceholder, StringPlaceholder } from '../../shared/co
 import { GET_DOCUMENT_BY_ID } from '../../data/constants/Queries';
 import { GET_DOCUMENT_BY_ID_RESPONSE } from '../../data/types/Queries';
 
-const Main = styled.div`
+const Main = styled.main`
   margin-top: 12px;
   margin-bottom: 100px;
   padding: 0 24px;
 `;
 
-const ArtboardList = styled.div`
+const ArtboardList = styled.ul`
   display: grid;
   grid-template-columns: repeat(5, minmax(240px, 1fr));
   grid-column-gap: 16px;
@@ -35,20 +35,26 @@ const ArtboardList = styled.div`
   }
 `;
 
-const ArtboardWrapper = styled(Link)`
+const ArtboardItem = styled.li`
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 12px 0;
   border-radius: 4px;
-  color: rgba(0, 0, 0, 0.65);
-  text-decoration: none;
 
   &:hover {
     padding: 11px 0;
     border: 1px solid rgb(253, 173, 0, 0.3);
     background-color: rgba(254, 238, 183, 0.2);
   }
+`;
+
+const ArtboardWrapper = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
 `;
 
 const ArtboardThumbnail = styled.img`
@@ -86,15 +92,17 @@ const DocumentView = () => {
         ) : (
           <ArtboardList>
             {document?.artboards?.entries.map((artboard, index) => (
-              <ArtboardWrapper
-                key={index}
-                to={`artboard/${artboard.name}`}
-                aria-label={`${artboard?.name} artboard`}
-                data-testId="document-artboard-thumbnail"
-              >
-                <ArtboardThumbnail src={artboard?.files.find((artboardImage) => artboardImage.scale === 1)?.url} />
-                <ArtboardName>{artboard?.name}</ArtboardName>
-              </ArtboardWrapper>
+              <ArtboardItem>
+                <ArtboardWrapper
+                  key={index}
+                  to={`artboard/${artboard.name}`}
+                  aria-label={`${artboard?.name} artboard`}
+                  data-testId="document-artboard-thumbnail"
+                >
+                  <ArtboardThumbnail src={artboard?.files.find((artboardImage) => artboardImage.scale === 1)?.url} />
+                  <ArtboardName>{artboard?.name}</ArtboardName>
+                </ArtboardWrapper>
+              </ArtboardItem>
             ))}
           </ArtboardList>
         )}
