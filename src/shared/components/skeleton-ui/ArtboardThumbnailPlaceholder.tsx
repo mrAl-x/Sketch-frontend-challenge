@@ -34,15 +34,15 @@ const Thumbnail = styled.div`
 const ArtboardThumbnailPlaceholder = () => {
   return (
     <Wrapper>
-      <ThumbnailWrapper>
+      <ThumbnailWrapper data-testId="skeleton-artboard-thumbnail">
         <Thumbnail />
         <StringPlaceholder />
       </ThumbnailWrapper>
-      <ThumbnailWrapper>
+      <ThumbnailWrapper data-testId="skeleton-artboard-thumbnail">
         <Thumbnail />
         <StringPlaceholder />
       </ThumbnailWrapper>
-      <ThumbnailWrapper>
+      <ThumbnailWrapper data-testId="skeleton-artboard-thumbnail">
         <Thumbnail />
         <StringPlaceholder />
       </ThumbnailWrapper>

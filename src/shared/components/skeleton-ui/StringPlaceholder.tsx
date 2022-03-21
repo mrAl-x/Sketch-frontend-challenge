@@ -32,7 +32,7 @@ const Wrapper = styled.div<{ width?: number; height?: number }>`
 `;
 
 const StringPlaceholder = ({ width, height }: StringPlaceholderProps) => {
-  return <Wrapper width={width} height={height} />;
+  return <Wrapper width={width} height={height} data-testId="skeleton-string" />;
 };
 
 StringPlaceholder.defaultProps = {
